@@ -38,6 +38,24 @@ def sao_gemeos(a, b):
     Dica: gere as 6 rotações possíveis de `a` e verifique se alguma
     delas é igual a `b`.
     """
+    if len(a) != len(b):
+            return False
+        
+    for i in range(6): #verificar as 6 pontas de cada floco
+    
+            
+        eh_gemeo=True
+        for j in range(6):
+            if a[j] != b[(i+j) % 6]:
+                eh_gemeo=False
+                break
+    
+        if eh_gemeo:
+            return True
+    
+    return False
+    
+
     # TODO: implementar
     raise NotImplementedError
 
@@ -49,7 +67,16 @@ def existe_par_gemeo_ingenuo(flocos):
     ou None se não existir nenhum par.
     """
     # TODO: implementar (dois laços aninhados + sao_gemeos)
-    raise NotImplementedError
+    #raise NotImplementedError
+
+    n=len(flocos)
+    for i in range(n):
+        for j in range(i+1,n):
+            if sao_gemeos(flocos[i],flocos[j]):
+                return (i,j)
+
+    return None
+
 
 
 def chave_canonica(floco):
