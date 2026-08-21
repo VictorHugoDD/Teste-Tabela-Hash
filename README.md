@@ -45,7 +45,7 @@ Requer Python 3 e todos os arquivos `floco_*.txt` na mesma pasta do `flocos.py`.
 | 8.000 | 163.8231 | 0.0922 |
 | 16.000 | 635.2844 | 0.1845 |
  
-![Gráfico comparando os tempos de execução](grafico_tempos.png)
+![Gráfico comparando os tempos de execução](grafico_comparacao.png)
  
 ## 🔍 Principais conclusões
  
