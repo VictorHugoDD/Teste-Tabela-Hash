@@ -56,9 +56,6 @@ def sao_gemeos(a, b):
     return False
     
 
-    # TODO: implementar
-    raise NotImplementedError
-
 
 def existe_par_gemeo_ingenuo(flocos):
     """Solução ingênua: compara todos os pares de flocos, um a um.
@@ -89,7 +86,22 @@ def chave_canonica(floco):
     essa rotação (convertida para tupla) como chave.
     """
     # TODO: implementar
-    raise NotImplementedError
+    #raise NotImplementedError
+
+    n=len(floco)
+    rot=[]
+
+    for i in range(n):
+
+        rot1=[]
+
+        for j in range(n):
+            rot1.append(floco[(i+j)%n])
+        rot.append(rot1)
+
+    menor=min(rot)
+    return tuple(menor)
+
 
 
 def existe_par_gemeo_hash(flocos):
@@ -100,7 +112,16 @@ def existe_par_gemeo_hash(flocos):
     encontrado, ou None se não existir nenhum.
     """
     # TODO: implementar
-    raise NotImplementedError
+    #raise NotImplementedError
+    vistos={}
+
+    for i,floco in enumerate(flocos):
+        chave=chave_canonica(floco)
+        if chave in vistos:
+            return (vistos[chave],i)
+        vistos[chave]=i
+
+    return None
 
 
 # ---------------------------------------------------------------------
@@ -127,8 +148,8 @@ if __name__ == "__main__":
         "floco_semgemeos_2000.txt",
         "floco_semgemeos_4000.txt",
         # descomente conforme for testando N maiores
-        # "floco_semgemeos_8000.txt",
-        # "floco_semgemeos_16000.txt",
+        "floco_semgemeos_8000.txt",
+        "floco_semgemeos_16000.txt",
     ]
 
     print(f"{'instância':30s} {'N':>7s} {'ingênuo (s)':>14s} {'hash (s)':>12s}")
